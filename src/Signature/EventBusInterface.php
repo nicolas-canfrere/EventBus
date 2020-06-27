@@ -22,9 +22,9 @@ interface EventBusInterface
     public function hasHandler(EventHandlerInterface $handler): bool;
 
     /**
-     * @param object $event
+     * @param EventInterface $event
      */
-    public function dispatch(object $event): void;
+    public function dispatch(EventInterface $event): void;
 
     /**
      * @param string $eventName

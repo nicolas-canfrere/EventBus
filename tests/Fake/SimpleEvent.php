@@ -4,7 +4,9 @@
 namespace Loxodonta\EventBus\Tests\Fake;
 
 
-class SimpleEvent
+use Loxodonta\EventBus\Signature\EventInterface;
+
+class SimpleEvent implements EventInterface
 {
 
 }

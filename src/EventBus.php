@@ -2,8 +2,10 @@
 
 namespace Loxodonta\EventBus;
 
+use Loxodonta\EventBus\Exception\EventHasNoHandlerException;
 use Loxodonta\EventBus\Signature\EventBusInterface;
 use Loxodonta\EventBus\Signature\EventHandlerInterface;
+use Loxodonta\EventBus\Signature\EventInterface;
 
 /**
  * Class EventBus
@@ -40,7 +42,7 @@ class EventBus implements EventBusInterface
     /**
      * @inheritDoc
      */
-    public function dispatch(object $event): void
+    public function dispatch(EventInterface $event): void
     {
         $eventName = get_class($event);
 
@@ -48,6 +50,10 @@ class EventBus implements EventBusInterface
             foreach ($this->handlers[$eventName] as $handler) {
                 $handler->handle($event);
             }
+        } else {
+            throw new EventHasNoHandlerException(
+                sprintf('%s event has no handler', $eventName)
+            );
         }
     }
 

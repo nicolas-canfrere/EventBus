@@ -3,6 +3,7 @@
 namespace Loxodonta\EventBus\Tests;
 
 use Loxodonta\EventBus\EventBus;
+use Loxodonta\EventBus\Exception\EventHasNoHandlerException;
 use Loxodonta\EventBus\Signature\EventBusInterface;
 use Loxodonta\EventBus\Signature\EventHandlerInterface;
 use Loxodonta\EventBus\Tests\Fake\SimpleEvent;
@@ -50,6 +51,19 @@ class EventBusTest extends TestCase
         $eventHandler->expects($this->once())->method('handle')
             ->with($event);
 
+
+        $eventBus->dispatch($event);
+    }
+
+    /**
+     * @test
+     */
+    public function itMustThrowExceptionIfNoHandlerForEvent()
+    {
+        $event = new SimpleEvent();
+        $eventBus = new EventBus();
+
+        $this->expectException(EventHasNoHandlerException::class);
 
         $eventBus->dispatch($event);
     }
