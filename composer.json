@@ -1,0 +1,28 @@
+{
+    "name": "loxodonta/event-bus",
+    "description": "\"An event bus implementation\"",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Nicolas Canfrere",
+            "email": "nicolas.canfrere@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Loxodonta\\EventBus\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Loxodonta\\EventBus\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.2"
+    }
+}
